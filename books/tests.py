@@ -64,15 +64,15 @@ class BookTests(APITestCase):
         url = reverse("book_detail", args=(1,))
         data = {
             "owner": 1,
-            "name": "lotr",
+            "title": "lotr",
             "author": "tolkien",
         }
         response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         book = Book.objects.get(id=1)
-        self.assertEqual(book.title, data["lotr"])
+        self.assertEqual(book.title, data["title"])
         self.assertEqual(book.owner.id, data["owner"])
-        self.assertEqual(book.author, data["tolkien"])
+        self.assertEqual(book.author, data["author"])
 
     def test_delete_book(self):
         url = reverse("book_detail", args=(1,))
