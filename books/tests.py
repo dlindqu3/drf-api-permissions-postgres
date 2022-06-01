@@ -59,7 +59,7 @@ class BookTests(APITestCase):
         books = Book.objects.all()
         self.assertEqual(len(books), 2)
         self.assertEqual(Book.objects.get(id=2).title, "lotr")
-
+    ##fixed 
     def test_update_book(self):
         url = reverse("book_detail", args=(1,))
         data = {
